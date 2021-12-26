@@ -46,6 +46,21 @@
 
 迁移时，只需将上次备份的数据存放于 `/opt/bitwarden` ，其他按照以上流程配置启动即可。
 
+### Security
+
+#### 限制请求
+
+如：
+
+```conf
+# some.conf
+http {
+    if ($http_x_custom_header !~* "admin") {
+        return 404;
+    }
+}
+```
+
 ### Monitor
 
 以下是 `nginx` 容器内的日志监控位置：
